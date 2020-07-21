@@ -1,0 +1,43 @@
+body {
+    background: black;
+    color: orange;
+}
+
+button,
+div,
+form,
+input {
+margin: 3%;
+font-size: 30px;
+margin-left: 3%;
+}
+
+h1 {
+    font-size: 50px;
+    margin-bottom: 3%;
+}
+
+button {
+    color: purple;
+    background-color: greenyellow;
+}
+
+#add-band {
+    color: purple;
+    background-color: greenyellow;
+}
+
+.container {
+    width: 80%;
+    text-align: center;
+    align-content: center;
+    margin-left: 8%;
+}
+
+#images-appear-here {
+    width: 80%;
+    text-align: center;
+    align-content: center;
+    margin-left: 8%;
+}
+

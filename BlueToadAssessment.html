@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Bangers&display=swap" rel="stylesheet"> -->
+    <title>Bands</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Image Search</h1>
+
+        <form>
+            <input type="text" id="search-input"><br>
+            <input id="searchBtn" type="submit" value="Search">
+        </form>
+    </div>
+
+    <div id="imgs-appear-here"></div>
+
+    <script>
+        // Function to retrieve and add imgs to the page
+        $(document).on("click", "#searchBtn", function () {
+
+            $("#imgs-appear-here").empty();
+
+            let imgData = $("#search-input").attr("data-img");
+
+            // Giphy API URL
+            let queryURL = ""
+
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            }).then(res => res.json())
+                .then((data) => {
+                    console.log(data)
+                })
+        })
+    </script>
+</body>
+
+</html>

@@ -3,7 +3,7 @@ searchAPI = (searchTerm) => {
     //Clear the previous results (if any)
     $("#imgs-appear-here").empty();
     // Add personal API key here
-    let APIKEY = ""
+    let APIKEY = "c3d547ee32b7a8778b381a080a03fbfc"
     // Giphy API URL
     let queryURL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&tags=" + searchTerm + "&safe_search=1&api_key=" + APIKEY + "&per_page=25&format=json&nojsoncallback=1"
     // Ajax call
@@ -15,7 +15,7 @@ searchAPI = (searchTerm) => {
             // Assign variable to returned data array
             let photos = data.photos.photo
             // Go through the results
-            for (var i = 0; i < photos.length; i++) {
+            for (let i = 0; i < photos.length; i++) {
                 // Create image URL tag variables
                 let farm = photos[i].farm.toString()
                 let server = photos[i].server

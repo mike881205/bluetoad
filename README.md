@@ -9,13 +9,6 @@ This is my submission for the BlueToad screening assessment. This app will take 
 3. The results will be displayed on screen below the search field.
 4. To return a new search, repeat the above steps and the results display will refresh with the new images.
 
-## Code
-
-This app makes use of jQuery to target certain HTML elements in order to diplay the results.
-
-* Once the user has entered their search terms:
-    1. If the user 
-
 ## Tools Used
 
 Bootstrap, jQuery, Flickr API

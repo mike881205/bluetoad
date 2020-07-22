@@ -16,7 +16,6 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="reset.css">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <!-- <link href="https://fonts.googleapis.com/css?family=Bangers&display=swap" rel="stylesheet"> -->
     <title>Blue Toad</title>
 </head>
 
@@ -24,17 +23,17 @@
 
     <div class="row d-flex justify-content-center text-center">
         <div class="col-sm">
-            <div class="row">
+            <div class="row topRow">
                 <div class="col-lg">
                     <h2>Flickr Image Search</h2><br>
                     <input type="text" id="search-input"><br>
                     <input id="searchBtn" type="submit" value="Search">
                 </div>
             </div>
-            <div class="=row">
-                <div class="col-sm ">
-                    <div class="jumbotron imgBox">
-                        <div class="row" id="imgs-appear-here"> </div>
+            <div class="row btmRow">
+                <div class="col-sm">
+                    <div class="row imgBox" id="imgs-appear-here">
+
                     </div>
                 </div>
             </div>
@@ -45,52 +44,56 @@
 
     <script>
         // Function to retrieve and add imgs to the page
-        $(document).on("click", "#searchBtn", function (event) {
-
-            event.preventDefault()
-
-            console.log($("#search-input").val().trim())
-
+        searchAPI = () => {
+            //Clear the previous results (if any)
             $("#imgs-appear-here").empty();
-
+            // Add personal API key here
             let APIKEY = ""
-
             // Giphy API URL
             let queryURL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&tags=" + $("#search-input").val().trim() + "&safe_search=1&api_key=" + APIKEY + "&per_page=25&format=json&nojsoncallback=1"
-
+            // Ajax call
             $.ajax({
                 url: queryURL,
                 method: "GET"
             })
                 .then((data) => {
-
+                    // Assign variable to returned data array
                     let photos = data.photos.photo
-
+                    // Go through the results
                     for (var i = 0; i < photos.length; i++) {
-
+                        // Create image URL tag variables
                         let farm = photos[i].farm.toString()
                         let server = photos[i].server
                         let id = photos[i].id
                         let secret = photos[i].secret
-
                         // Creating an image tag
-
-                        let url = "https://farm" + farm + ".staticflickr.com/" + server + "/" + id + "_" + secret + "_m.jpg"
-
+                        let url = "https://farm" + farm + ".staticflickr.com/" + server + "/" + id + "_" + secret + "_c.jpg"
                         // Creating a div for the img
-                        let imgCol = $("<div>").addClass("col-sm imgCol");
-
+                        let imgDiv = $("<div>").addClass("col-sm imgDiv");
+                        // Create Image
                         let image = $("<img>").addClass("searchImg").attr("src", url);
-
                         // Appending the paragraph and bandImage to the "imgDiv" div
-                        imgCol.append(image);
-
+                        imgDiv.append(image);
                         // Prepending the imgDiv to the "#gifs-appear-here" div in the HTML
-                        $("#imgs-appear-here").prepend(imgCol);
-
+                        $("#imgs-appear-here").prepend(imgDiv);
                     }
                 })
+        }
+        // Function to handle button click
+        $(document).on("click", "#searchBtn", (event) => {
+            let btmRow = $(".btmRow")
+            event.preventDefault()
+            searchAPI();
         })
+        // Function to handle key press
+        $(document).keypress((event) => {
+            let btmRow = $(".btmRow")
+            if (event.keyCode === 13 && $("#search-input").val()) {
+                event.preventDefault()
+                searchAPI();
+            }
+        })
+
     </script>
 </body>
 

@@ -10,6 +10,7 @@ form,
 input {
 margin: 1%;
 font-size: 30px;
+text-align: center;
 }
 
 .row {
@@ -17,20 +18,14 @@ font-size: 30px;
     margin-right: 0%!important;
 }
 
-h1 {
-    font-size: 50px;
-    margin-bottom: 3%;
-}
-
-#images-appear-here {
-    width: 80%;
-    text-align: center;
-    align-content: center;
-    margin-left: 8%;
+.topRow,
+.btmRow {
+    margin: 0%;
 }
 
 .imgBox {
     overflow-y: auto;
-    height: 400px;
+    height: 425px;
+    background-color: grey;
 }
 

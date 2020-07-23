@@ -4,7 +4,7 @@ searchAPI = (searchTerm) => {
     $("#imgs-appear-here").empty();
     // Add personal API key here
     let APIKEY = ""
-    // Giphy API URL
+    // Flickr API URL
     let queryURL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&tags=" + searchTerm + "&safe_search=1&api_key=" + APIKEY + "&per_page=25&format=json&nojsoncallback=1"
     // Ajax call
     $.ajax({
@@ -31,7 +31,7 @@ searchAPI = (searchTerm) => {
                 // Append the image and row/col
                 imgCol.append(image);
                 imgRow.append(imgCol)
-                // Prepending the imgRow to the "#gifs-appear-here" div in the HTML
+                // Prepending the imgRow to the "#imgs-appear-here" div in the HTML
                 $("#imgs-appear-here").prepend(imgRow);
             }
         })

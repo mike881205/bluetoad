@@ -43,7 +43,7 @@ $(document).on("click", "#searchBtn", (event) => {
     if ($("#search-input").val()) {
         event.preventDefault()
         // Pass the input value into the searchAPI function
-        searchAPI($("#search-input").val());
+        searchAPI($("#search-input").val().trim());
     }
 })
 
@@ -53,6 +53,6 @@ $(document).keypress((event) => {
     if (event.keyCode === 13 && $("#search-input").val()) {
         event.preventDefault()
         // Pass the input value into the searchAPI function
-        searchAPI($("#search-input").val());
+        searchAPI($("#search-input").val().trim());
     }
 })
